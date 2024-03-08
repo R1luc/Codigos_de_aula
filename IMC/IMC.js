@@ -4,9 +4,9 @@ function submeter() {
     let imc = Math.ceil(massa/(altura**2))
     let classe;
     if (imc < 18.5) classe = "Magreza";
-    else if (18.5 < imc < 24.9) classe = "Normal";
-    else if (24.9 < imc < 29.9) classe = "Sobrepeso";
-    else if (29.9 < imc < 39.9) classe = "Obesidade";
+    else if (18.5 < imc, imc < 24.9) classe = "Normal";
+    else if (24.9 < imc, imc < 29.9) classe = "Sobrepeso";
+    else if (29.9 < imc, imc < 39.9) classe = "Obesidade";
     else classe = "Obesidade Grave";
 
     document.getElementById("resultado").innerHTML = 
