@@ -8,7 +8,7 @@ function criar(){
             `Preencha o nome!`
     }
     else{
-        if(email.includes("@",".")){
+        if(email.includes("@") | email.includes(".")){
             if(senha.length >= 8){
                 if(senha == conf_senha){
                     document.getElementById("cadastro").innerHTML =
