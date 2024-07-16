@@ -3,13 +3,14 @@ function criar(){
     let email = document.getElementById("email").value 
     let senha = document.getElementById("senha").value 
     let conf_senha = document.getElementById("conf_senha").value
+    const regex = /^(?=.*[a-zA-Z\d]).{8,}$/
     if(!nome){
         document.getElementById("cadastro").innerHTML =
             `Preencha o nome!`
     }
     else{
         if(email.includes("@") && email.includes(".")){
-            if(senha.length >= 8){
+            if(regex.test(senha)){
                 if(senha == conf_senha){
                     document.getElementById("cadastro").innerHTML =
                         `Seu cadastro foi concluído com sucesso!`
