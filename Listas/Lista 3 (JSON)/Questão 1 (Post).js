@@ -15,11 +15,6 @@ fetch(apiPosts)
     .then(response => response.json())
     .then(posts => displayPosts(posts))
     .catch(error => displayError(error))
-    
-/*fetch(apiUrl)
-    .then(response => response.json())
-    .then(users => displayUsers(users))
-    .catch(error => displayError(error));*/
 
 function displayPosts(posts) {
     const postList = document.getElementById('post-list');
@@ -27,7 +22,6 @@ function displayPosts(posts) {
     
     posts.forEach(post => {
         const postElement = document.createElement('div');
-        //userElement.classList.add('user');
         postElement.innerHTML = `
                 <h2>User: @${users[post.userId]} #${post.id}</h2>
                 <p>Id: ${post.userId}</p>
