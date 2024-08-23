@@ -18,7 +18,6 @@ let apiComments = `https://jsonplaceholder.typicode.com/comments?postId=${post_i
 fetch(apiComments)
     .then(response => response.json())
     .then(comments => displayComments(comments))
-    .then(error => displayError(error))
 
 function displayComments(comments){
     const commentsList = document.getElementById("comment-list")
@@ -36,9 +35,5 @@ function displayComments(comments){
         commentsList.appendChild(commentElement);
         }
     )
-}
-function displayError(error) {
-    const commentList = document.getElementById('comment-list');
-    commentList.innerHTML = `<div class="error">Ocorreu um erro: ${error.message}</div>`;
 }
 }
