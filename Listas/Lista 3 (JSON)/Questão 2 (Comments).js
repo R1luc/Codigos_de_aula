@@ -21,7 +21,7 @@ fetch(apiComments)
 
 function displayComments(comments){
     const commentsList = document.getElementById("comment-list")
-    commentsList.innerHTML = ''
+    commentsList.innerHTML = ""
     
     comments.forEach(comment => {
         const commentElement = document.createElement('div');
