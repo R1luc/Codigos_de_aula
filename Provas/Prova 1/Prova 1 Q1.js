@@ -1,5 +1,5 @@
 function repetir(){
-    let texto = document.getElementById("texto").value 
+    let texto = document.getElementById("texto").value + "<br>"
     let numero = document.getElementById("numero").value
     let textofinal = texto
     if(numero<=0){
