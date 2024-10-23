@@ -36,7 +36,7 @@ function feriados() {
                 const totalFeriadosNoMes = feriadosDoMes.length;
     
                 const mesElement = document.createElement('div');
-                mesElement.innerHTML = `<h2>${mes} (${totalFeriadosNoMes} feriados(s))</h2>`;
+                mesElement.innerHTML = `<h2>${mes} (${totalFeriadosNoMes} feriado(s))</h2>`;
                 lista_de_feriados.appendChild(mesElement);
     
                 feriadosDoMes.forEach(feriado => {
