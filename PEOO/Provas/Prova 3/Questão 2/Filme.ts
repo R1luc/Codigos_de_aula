@@ -44,7 +44,7 @@ export class Filme {
         
     }
 
-    calcularMediaAvaliacoes(){
+    calcularMediaAvaliacoes(): number{
         let soma = 0
         let quantidade = 0
         this.avaliacoes.forEach(avaliacao => {

@@ -22,4 +22,4 @@ catalogo.adicionarFilme(filme4)
 catalogo.adicionarFilme(filme5)
 catalogo.listarFilmes()
 
-FiltrarFilmesPorAno(catalogo.pegarCatalogo, 2000)
+FiltrarFilmesPorAno(catalogo.pegarCatalogo, 1999)
