@@ -8,6 +8,7 @@ export class Filme {
         this.titulo = titulo;
         this.diretor = diretor;
         this.anoLancamento = anoLancamento;
+        this.avaliacoes = []
     }
 
     get pegarTitulo(): string{
@@ -45,13 +46,16 @@ export class Filme {
     }
 
     calcularMediaAvaliacoes(): number{
-        let soma = 0
-        let quantidade = 0
-        this.avaliacoes.forEach(avaliacao => {
-            soma += avaliacao
-            quantidade += 1 
-        })
-        let media = soma/quantidade
-        return media
+        if (this.avaliacoes.length > 0) { 
+            let soma = 0
+            this.avaliacoes.forEach(avaliacao => {
+                soma += avaliacao 
+            })
+            let media = soma/this.avaliacoes.length
+            return media
+        }
+        else {
+            return `Deixe algumas avaliações antes`
+        }
     }
 }
