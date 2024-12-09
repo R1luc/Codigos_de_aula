@@ -6,6 +6,7 @@ var Filme = /** @class */ (function () {
         this.titulo = titulo;
         this.diretor = diretor;
         this.anoLancamento = anoLancamento;
+        this.avaliacoes = [];
     }
     Object.defineProperty(Filme.prototype, "pegarTitulo", {
         get: function () {
@@ -59,12 +60,10 @@ var Filme = /** @class */ (function () {
     };
     Filme.prototype.calcularMediaAvaliacoes = function () {
         var soma = 0;
-        var quantidade = 0;
         this.avaliacoes.forEach(function (avaliacao) {
             soma += avaliacao;
-            quantidade += 1;
         });
-        var media = soma / quantidade;
+        var media = soma / this.avaliacoes.length;
         return media;
     };
     return Filme;

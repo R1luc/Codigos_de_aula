@@ -14,6 +14,6 @@ export class Catalogo{
     listarFilmes(){
         console.log("LISTAGEM DOS FILMES:");
         this.Filmes.forEach(filme => {
-            console.log("- " + filme.pegarTitulo + ", " + filme.pegarDiretor + ", " + filme.pegarAnoLancamento + " -> ");
+            console.log("- " + filme.pegarTitulo + ", " + filme.pegarDiretor + ", " + filme.pegarAnoLancamento + " -> " + filme.calcularMediaAvaliacoes);
     })}
 }

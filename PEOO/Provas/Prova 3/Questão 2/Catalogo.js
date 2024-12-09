@@ -19,7 +19,7 @@ var Catalogo = /** @class */ (function () {
     Catalogo.prototype.listarFilmes = function () {
         console.log("LISTAGEM DOS FILMES:");
         this.Filmes.forEach(function (filme) {
-            console.log("- " + filme.pegarTitulo + ", " + filme.pegarDiretor + ", " + filme.pegarAnoLancamento + " -> ");
+            console.log("- " + filme.pegarTitulo + ", " + filme.pegarDiretor + ", " + filme.pegarAnoLancamento + " -> " + filme.calcularMediaAvaliacoes);
         });
     };
     return Catalogo;
