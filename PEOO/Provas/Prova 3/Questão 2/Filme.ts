@@ -45,17 +45,12 @@ export class Filme {
         
     }
 
-    calcularMediaAvaliacoes(): number{
-        if (this.avaliacoes.length > 0) { 
-            let soma = 0
-            this.avaliacoes.forEach(avaliacao => {
-                soma += avaliacao 
-            })
-            let media = soma/this.avaliacoes.length
-            return media
-        }
-        else {
-            return `Deixe algumas avaliações antes`
-        }
+    calcularMediaAvaliacoes(): number{ 
+        let soma = 0
+        this.avaliacoes.forEach(avaliacao => {
+            soma += avaliacao 
+        })
+        let media = soma/this.avaliacoes.length
+        return media
     }
 }
