@@ -1,0 +1,21 @@
+body {
+    background-color: aqua;
+}
+
+p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: red
+}
+
+.rodape {
+    color: green;
+    font-weight: bold;
+}
+
+#texto {
+    color: blue;
+}
+
+div {
+    background-color: blue;
+}
