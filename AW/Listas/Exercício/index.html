@@ -14,28 +14,28 @@
 <body>
     <h1>Cadastro de produtos</h1>
     <hr />
-    <form>
+    <form id="meuForm" onsubmit="gravarProduto(event)">
         <table border="5">
             <tr>
                 <td>Nome do produto:</td>
-                <td><input type="text" id="nomeProdutos" maxlength="50" /></td>
+                <td><input type="text" id="nomeProdutos" maxlength="50" required /></td>
             </tr> 
             <tr>
                 <td>Quantidade:</td>
-                <td><input type="number" id="qtdProdutos" /></td>
+                <td><input type="number" id="qtdProdutos" required /></td>
             </tr>
             <tr>
                 <td>Valor unitário:</td>
-                <td><input type="number" id="valorProdutos" /></td>
+                <td><input type="number" id="valorProdutos" required /></td>
             </tr>
             <tr>
                 <td>Fornecedor:</td>
-                <td><input type="text" id="fornecedorProdutos" /></td>
+                <td><input type="text" id="fornecedorProdutos" required /></td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <button type="button" onclick="gravarProduto()">Gravar</button>
-                    <button type="reset">Limpar</button>
+                    <button type="submit">Gravar</button>
+                    <button type="button" onclick="limpar()">Limpar</button>
                 </td>
             </tr>
         </table>

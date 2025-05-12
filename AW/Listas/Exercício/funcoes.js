@@ -1,6 +1,8 @@
 var listaProdutos = [];
+var emAlteracao = false;
 
-function gravarProduto() {
+function gravarProduto(event) {
+    event.preventDefault();
     let nomeProduto = document.getElementById("nomeProdutos").value;
     let qtdProduto = document.getElementById("qtdProdutos").value;
     let valorProduto = document.getElementById("valorProdutos").value;
@@ -12,9 +14,16 @@ function gravarProduto() {
         valorProduto: valorProduto,
         fornecedorProduto: fornecedorProduto,
     }
+    if (emAlteracao) {
+        listaProdutos[indiceElementoAlteracao] = produto;
+        emAlteracao = false;
+    }
+    else {
+        listaProdutos.push(produto)
+    }
 
-    listaProdutos.push(produto);
     listarProdutos();
+    limpar();
 }
 
 function listarProdutos() {
@@ -25,14 +34,35 @@ function listarProdutos() {
         listaProdutos.forEach((produto, indice) => {
             conteudo += `
                 <tr>
-                    <td></td>
+                    <td>${indice}</td>
                     <td>${produto.nomeProduto}</td>
                     <td>${produto.qtdProduto}</td>
                     <td>${produto.valorProduto}</td>
                     <td>${produto.fornecedorProduto}</td>
+                    <td><button type"button" onclick="alterar(${indice})">Alterar</button></td> 
+                    <td><button type"button" onclick="excluir(${indice})">Excluir</button></td> 
                 </tr>
             `;
         });
     }
     document.getElementById('conteudo').innerHTML = conteudo;
+}
+
+function excluir(indice) {
+    if (confirm('Deseja realmente excluir este produto?'))
+    listaProdutos.splice(indice, 1);
+    listarProdutos();
+}
+
+function alterar(indice) {
+    emAlteracao = true;
+    indiceElementoAlteracao = indice;
+    document.getElementById('nomeProduto').value = listaProdutos[indice].nomeProduto;
+    document.getElementById('qtdProduto').value = listaProdutos[indice].qtdProduto;
+    document.getElementById('valorProduto').value = listaProdutos[indice].valorProduto;
+    document.getElementById('fornecedorProduto').value = listaProdutos[indice].fornecedorProduto;
+}
+
+function limpar() {
+    document.getAnimations('meuForm').reset();
 }
