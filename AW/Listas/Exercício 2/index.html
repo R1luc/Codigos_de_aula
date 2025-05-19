@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <body>
+        <h1>Lista de compras</h1>
+        <hr />
+            <table border="5">
+                <tr>
+                    <td>Nome do produto:</td>
+                    <td><input type="text" id="nomeProduto" maxlength="50" required /></td>
+                </tr> 
+                <tr>
+                    <td colspan="2">
+                        <button type="button" onclick="adicionarItem()">Adicionar</button>
+                        <button type="button" onclick="removerItem()">Remover</button>
+                    </td>
+                </tr>
+            </table>
+        
+        <hr />
+        <h2>Produtos</h2>
+        <table border="5">
+            <tr>
+                <th>#</th>
+                <th>Nome do produto</th>
+            </tr>
+            <tbody id="conteudo">
+                <tr>
+                    <td colspan="7">Nenhum produto cadastrado até o momento</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table border="5">
+            <tr>
+                <th>Total de produtos</th>
+            </tr>
+            <tbody id="total">
+                <tr>
+                    <td>0 Produtos</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</body>
+<script src="funcoes.js"></script>
+</html>
