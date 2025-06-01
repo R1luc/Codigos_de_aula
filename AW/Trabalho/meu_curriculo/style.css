@@ -1,6 +1,6 @@
 body {
     padding-left: 15%;
-    background-image: url(Imagens/Fundo.jpg);
+    background-image: url("Imagens/Fundo.jpg");
     background-repeat: no-repeat;    
     background-size: cover;
     background-attachment: fixed;
@@ -10,13 +10,13 @@ body {
 header {
     display: flex;
     align-items: center;
-    background-image: url(Imagens/Background.jpg);
+    background-image: url("Imagens/Background.jpg");
     padding: 10px;
     border-radius: 12px;
 }
 
 h1 {
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: 'Arial', Helvetica, sans-serif;
     font-size: 48px;
     font-weight: bold;
     }
@@ -71,15 +71,6 @@ a:hover {
     width: 150px;
 }
 
-.texto-com-borda {
-    color: black; /* cor do texto */
-    text-shadow:
-        -1px -1px 0 white,
-         1px -1px 0 white,
-        -1px  1px 0 white,
-         1px  1px 0 white;
-}
-
 .comentario {
     height: 100px;
     width: 300px;
@@ -98,8 +89,10 @@ a:hover {
     color: black;
     content: " - Indisponivel";
 }
-.background {
-    background-color: rgb(119, 184, 192);
-    border-radius: 12px;
-}
 
+.background {
+    background-color: white;
+    border-radius: 12px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
