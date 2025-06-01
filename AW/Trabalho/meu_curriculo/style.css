@@ -12,7 +12,6 @@ header {
     align-items: center;
     background-image: url(Imagens/Background.jpg);
     padding: 10px;
-    width: fit-content;
     border-radius: 12px;
 }
 
@@ -99,6 +98,8 @@ a:hover {
     color: black;
     content: " - Indisponivel";
 }
-
-
+.background {
+    background-color: rgb(119, 184, 192);
+    border-radius: 12px;
+}
 
