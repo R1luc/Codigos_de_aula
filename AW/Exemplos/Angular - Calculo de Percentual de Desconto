@@ -1,0 +1,52 @@
+import { Component } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { CurrencyPipe } from '@angular/common';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [FormsModule, CurrencyPipe],
+  template: `
+    <div style="max-width: 400px; margin: 40px auto; text-align: center; padding: 20px;
+                border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.2); background-color: #fff;">
+      <h2>Cálculo de Desconto</h2>
+
+      <div>
+        <label>Valor do produto:</label><br>
+        <input type="number" [(ngModel)]="valorOriginal" placeholder="Digite o valor">
+      </div>
+
+      <div style="margin-top: 10px;">
+        <label>Percentual de desconto (%):</label><br>
+        <input type="number" [(ngModel)]="percentualDesconto" placeholder="Digite o desconto">
+      </div>
+
+      <button style="margin-top: 15px;" (click)="calcularDesconto()">Calcular Desconto</button>
+
+      @if (mostrarResultado) {
+        <div style="margin-top: 20px; text-align: left;">
+          <p><strong>Valor original:</strong> {{ valorOriginal | currency:'BRL':'symbol' }}</p>
+          <p><strong>Desconto:</strong> {{ valorDesconto | currency:'BRL':'symbol' }}</p>
+          <p><strong>Valor final:</strong> {{ valorFinal | currency:'BRL':'symbol' }}</p>
+        </div>
+      }
+    </div>
+  `
+})
+export class AppComponent {
+  valorOriginal = 0;
+  percentualDesconto = 0;
+  valorDesconto = 0;
+  valorFinal = 0;
+  mostrarResultado = false;
+
+  calcularDesconto() {
+    const desconto = this.valorOriginal * (this.percentualDesconto / 100);
+    this.valorDesconto = desconto;
+    this.valorFinal = this.valorOriginal - desconto;
+    this.mostrarResultado = true;
+  }
+}
+
+bootstrapApplication(AppComponent);
