@@ -1,0 +1,87 @@
+import { Component } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [FormsModule, CommonModule],
+  template: `
+    <div style="max-width: 400px; margin: 40px auto; text-align: center; padding: 20px;
+                border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.2); background-color: #fff;">
+      <h2>Cálculo de Desconto</h2>
+
+      <div>
+        <label>Nome do Aluno:</label><br>
+        <input [(ngModel)]="nomeAluno" placeholder="Digite o nome">
+      </div>
+
+      <div style="margin-top: 10px;">
+        <label>Primeira nota:</label><br>
+        <input type="number" [(ngModel)]="nota1" placeholder="Digite a primeira nota">
+      </div>
+
+      <div style="margin-top: 10px;">
+        <label>Segunda nota:</label><br>
+        <input type="number" [(ngModel)]="nota2" placeholder="Digite a segunda nota">
+      </div>
+
+      <button style="margin-top: 15px;" (click)="calcularMedia()">Calcular média</button>
+
+      @if (mediaFinal !== 0) {
+        <div style="margin-top: 20px; text-align: left;">
+          <p><strong>Nome completo:</strong> {{ nomeAluno | uppercase }}</p>
+          <p><strong>Primeira nota:</strong> {{ nota1 | number:'1.2-2' }}</p>
+          <p><strong>Segunda nota:</strong> {{ nota2 | number:'1.2-2' }}</p>
+          <p><strong>Média final:</strong> {{ mediaFinal | number:'1.2-2' }}</p>
+          <p><strong>Situação:</strong> {{ verificarSituacao() }}</p>
+          <p><strong>Data da avaliação:</strong> {{ dataAvaliacao | date:'dd/MM/yyyy' }}</p>
+        </div>
+      }
+   `,
+  styles: `
+    .aprovado { color: blue; }
+    .reprovado { color: red; }
+    .recuperacao { color: orange; }
+  `
+})
+export class AppComponent {
+  nomeAluno = "";
+  nota1 = 0;
+  nota2 = 0;
+  mediaFinal = 0;
+  situacao = 0;
+  dataAvaliacao = new Date()
+
+  calcularMedia() {
+    this.mediaFinal = (this.nota1 + this.nota2)/2
+  }
+  
+  verificarSituacao() {
+    if (this.mediaFinal >= 60){
+      return 'Aprovado'
+    }
+    else if (this.mediaFinal < 40){
+      return 'Reprovado'
+    }
+    else {
+      return 'Em recuperação'
+    }
+  }
+  
+    verificarEstilo() {
+    if (this.mediaFinal >= 60){
+      return 'aprovado'
+    }
+    else if (this.mediaFinal < 40){
+      return 'reprovado'
+    }
+    else {
+      return 'recuperação'
+    }
+  }
+  
+}
+
+bootstrapApplication(AppComponent);
