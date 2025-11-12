@@ -1,0 +1,119 @@
+import { Component } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [FormsModule, CommonModule],
+  template: `
+    <div style="max-width: 400px; margin: 40px auto; text-align: center; padding: 20px;
+                border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.2); background-color: #fff;">
+      <h2>Controle de Abastecimento de Veículos</h2>
+
+      <div>
+        <label>Tipo de combustível:</label><br>
+        <select [(ngModel)]="tipoCombustivel" (change)="definirPrecoUnitario()">
+          <option value="">Selecione...</option>
+          <option value="gasolina">Gasolina</option>
+          <option value="etanol">Etanol</option>
+          <option value="diesel">Diesel</option>
+        </select>
+      </div>
+
+      <div style="margin-top: 10px;">
+        <label>Quantidade abastecida (litros):</label><br>
+        <input type="number" [(ngModel)]="qtdLitros" placeholder="Digite a quantidade abastecida">
+      </div>
+
+      <button 
+        style="margin-top: 15px;"
+        [ngClass]="definirClasseBotao()"
+        (click)="calcularValorTotal()">
+        Calcular Total
+      </button>
+
+      @if (valorTotal > 0) {
+        <div style="margin-top: 20px; text-align: left;">
+          <p><strong>Tipo de combustível:</strong> <span [class]="definirEstilo()">{{ tipoCombustivel | uppercase }}</span></p>
+          <p><strong>Quantidade de litros:</strong> {{ qtdLitros | number:'1.2-2' }}</p>
+          <p><strong>Valor unitário:</strong> {{ valorUnitario | currency:'BRL' }}</p>
+          <p><strong>Valor total:</strong> {{ valorTotal | currency:'BRL' }}</p>
+          <p><strong>Data do abastecimento:</strong> {{ dataAbastecimento | date:'dd/MM/yyyy' }}</p>
+        </div>
+      }
+    </div>
+  `,
+  styles: [`
+    select, input {
+      width: 100%;
+      padding: 6px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .botao-padrao { background-color: gray; }
+    .botao-gasolina { background-color: blue; }
+    .botao-etanol { background-color: green; }
+    .botao-diesel { background-color: black; }
+
+    .botao-padrao:hover { background-color: #555; }
+    .botao-gasolina:hover { background-color: #003d99; }
+    .botao-etanol:hover { background-color: #006600; }
+    .botao-diesel:hover { background-color: #222; }
+
+    .gasolina { color: blue; }
+    .etanol { color: green; }
+    .diesel { color: black; }
+  `]
+})
+export class AppComponent {
+  tipoCombustivel = '';
+  qtdLitros = 0;
+  valorUnitario = 0;
+  valorTotal = 0;
+  dataAbastecimento = new Date();
+
+  definirPrecoUnitario() {
+    if (this.tipoCombustivel === 'gasolina') {
+      this.valorUnitario = 6.17;
+    } else if (this.tipoCombustivel === 'etanol') {
+      this.valorUnitario = 4.28;
+    } else if (this.tipoCombustivel === 'diesel') {
+      this.valorUnitario = 6.10;
+    } else {
+      this.valorUnitario = 0;
+    }
+    
+  }
+
+  calcularValorTotal() {
+    this.valorTotal = this.qtdLitros * this.valorUnitario;
+  }
+
+  definirEstilo() {
+    return this.tipoCombustivel;
+  }
+
+  definirClasseBotao() {
+    switch (this.tipoCombustivel) {
+      case 'gasolina': return 'botao-gasolina';
+      case 'etanol': return 'botao-etanol';
+      case 'diesel': return 'botao-diesel';
+      default: return 'botao-padrao';
+    }
+  }
+}
+
+bootstrapApplication(AppComponent);
