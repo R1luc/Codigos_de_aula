@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var renda = 0;
 var filhos = 0;
 var somaFilhos = 0;
@@ -16,3 +18,4 @@ var mediaRenda = somaRenda / numFam;
 var mediaFilhos = somaFilhos / numFam;
 console.log('A renda familiar média da cidade é: ' + mediaRenda);
 console.log('A média do número de filhos de cada família é: ' + mediaFilhos);
+//# sourceMappingURL=Q1.js.map

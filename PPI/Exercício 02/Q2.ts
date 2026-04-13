@@ -7,6 +7,10 @@ while (num >= 0){
     let primo: boolean = true
     let divisor: number = num - 1
         
+    if (num == 0 || num == 1) {
+        primo = false
+    }
+
     while (primo && divisor > 1) {
     if (num % divisor == 0) {
         primo = false
