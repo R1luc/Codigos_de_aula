@@ -1,29 +1,87 @@
-<h1>Calculadora de Média</h1>
-<form>
-    <div>
-        <label for="b1">Bim 1</label>
-        <input id="b1" type="number" #b1>
+<h1 class="text-center my-4">Calculadora de Média</h1>
+<form class="form bg-light p-4 rounded shadow-sm mx-auto" style="max-width: 400px;">
+    <div class="mb-3">
+        <label for="b1" class="form-label">Bimestre 1</label>
+        <input id="b1" type="number" #b1 class="form-control">
     </div>
-    <div>
-        <label for="b2">Bim 2</label>
-        <input id="b2" type="number" #b2>
+    <div class="mb-3">
+        <label for="b2" class="form-label">Bimestre 2</label>
+        <input id="b2" type="number" #b2 class="form-control">
     </div>
-    <div>
-        <label for="b3">Bim 3</label>
-        <input id="b3" type="number" #b3>
+    <div class="mb-3">
+        <label for="b3" class="form-label">Bimestre 3</label>
+        <input id="b3" type="number" #b3 class="form-control">
     </div>
-    <div>
-        <label for="b4">Bim 4</label>
-        <input id="b4" type="number" #b4>
+    <div class="mb-3">
+        <label for="b4" class="form-label">Bimestre 4</label>
+        <input id="b4" type="number" #b4 class="form-control">
     </div>
-    <div>
-        <input type="button" value="Calcular" (click)="calcularMediaParcial(+b1.value, +b2.value, +b3.value, +b4.value)">
+    <div class="d-grid">
+        <input type="button" value="Calcular" (click)="calcularMediaParcial(+b1.value, +b2.value, +b3.value, +b4.value)" class="btn btn-primary">
     </div>
 </form>
+
 @if (mediaParcial){
-    <div>
-        <p>
-            Média Parcial: {{ mediaParcial }}
-        </p>
-    </div>
+    @if(mediaParcial >= 60){
+        <div class="alert alert-success mt-4 text-center">
+            <p class="mb-1">
+                Média Parcial: {{ mediaParcial }}
+            </p>
+            <p class="mb-0">
+                Aluno Aprovado
+            </p>
+        </div>   
+    }
+    @else if (20 > mediaParcial){
+        <div class="alert alert-danger mt-4 text-center">
+            <p class="mb-1">
+                Média Final: {{ mediaParcial }}
+            </p>
+            <p class="mb-0">
+                Aluno Reprovado sem direito a exame final
+            </p>
+        </div>   
+    }
+    @else {
+        <div class="alert alert-warning mt-4 text-center">
+            <p class="mb-1">
+                Média Final: {{ mediaParcial }}
+            </p>
+            <p class="mb-0">
+                Aluno Reprovado com direito a exame final
+            </p>
+        </div>  
+        <form class="form bg-light p-3 rounded shadow-sm mx-auto mt-3" style="max-width: 350px;">
+        <div class="mb-3">
+            <label for="rec" class="form-label">Recuperação</label>
+            <input id="rec" type="number" #rec class="form-control">
+        </div>
+        <div class="d-grid">
+            <input type="button" value="Calcular Média Final" (click)="calcularMediaFinal(mediaParcial, +rec.value)" class="btn btn-secondary">
+        </div>
+        </form>
+
+        @if (mediaFinal) { 
+            @if (mediaFinal >= 60){
+            <div class="alert alert-success mt-3 text-center">
+                <p class="mb-1">
+                    Média Final: {{ mediaFinal }}
+                </p>
+                <p class="mb-0">
+                    Aluno Aprovado!
+                </p>
+            </div>
+            } 
+        @else {
+            <div class="alert alert-danger mt-3 text-center">
+                <p class="mb-1">
+                    Média Final: {{ mediaFinal }}
+                </p>
+                <p class="mb-0">
+                    Aluno Reprovado!
+                </p>
+            </div>
+        }
+    }
+}
 }

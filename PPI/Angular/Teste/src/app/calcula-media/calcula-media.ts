@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class CalculaMedia {
   protected mediaParcial: number | undefined
+  protected mediaFinal: number | undefined
 
   constructor() {
     this.mediaParcial = undefined;
@@ -16,4 +17,8 @@ export class CalculaMedia {
   calcularMediaParcial(b1: number, b2: number, b3: number, b4: number){
     this.mediaParcial = (b1*2  + b2*2 + b3*3 + b4*3) / 10;
   }
+
+  calcularMediaFinal(mediaParcial: number, exame: number){
+    this.mediaFinal = (mediaParcial + exame) / 2;
+}
 }
