@@ -21,9 +21,10 @@
     </div>
 </form>
 
+<div class="mx-auto mt-4" style="max-width: 400px;">
 @if (mediaParcial){
     @if(mediaParcial >= 60){
-        <div class="alert alert-success mt-4 text-center">
+        <div class="alert alert-success text-center">
             <p class="mb-1">
                 Média Parcial: {{ mediaParcial }}
             </p>
@@ -33,7 +34,7 @@
         </div>   
     }
     @else if (20 > mediaParcial){
-        <div class="alert alert-danger mt-4 text-center">
+        <div class="alert alert-danger text-center">
             <p class="mb-1">
                 Média Final: {{ mediaParcial }}
             </p>
@@ -43,7 +44,7 @@
         </div>   
     }
     @else {
-        <div class="alert alert-warning mt-4 text-center">
+        <div class="alert alert-warning text-center">
             <p class="mb-1">
                 Média Final: {{ mediaParcial }}
             </p>
@@ -85,3 +86,4 @@
     }
 }
 }
+</div>
