@@ -1,0 +1,68 @@
+/* Estilos leves para o formulário com aparência Bootstrap */
+.adiciona-contato {
+  max-width: 760px;
+  margin: 1.25rem auto;
+  padding: 1rem;
+  background: linear-gradient(180deg, #ffffff, #fbfcff);
+  border-radius: 1rem;
+  box-shadow: 0 6px 18px rgba(41, 50, 83, 0.08);
+}
+
+.adiciona-contato .form-group{
+  margin-bottom: 0.9rem;
+}
+
+.adiciona-contato .form-control,
+.adiciona-contato .form-select {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(90,79,255,0.15);
+  padding: 0.6rem 0.75rem;
+  background-color: #fff;
+}
+
+.adiciona-contato label.form-label{
+  font-weight: 600;
+  color: #22263a;
+  font-size: 0.95rem;
+}
+
+.adiciona-contato .btn {
+  border-radius: 0.75rem;
+  padding: 0.55rem 1rem;
+  box-shadow: 0 4px 10px rgba(90,79,255,0.12);
+}
+
+.adiciona-contato .btn-primary{
+  background: linear-gradient(90deg, var(--app-primary), #7a6bff);
+  border: none;
+}
+
+/* Interactions & polish */
+.adiciona-contato .form-control:focus,
+.adiciona-contato .form-select:focus {
+  outline: none !important;
+  border-color: var(--app-primary) !important;
+  box-shadow: 0 6px 20px rgba(90,79,255,0.12), 0 0 0 0.18rem rgba(122,107,255,0.06) !important;
+  transition: box-shadow .14s ease, border-color .12s ease;
+}
+
+.adiciona-contato ::placeholder{
+  color: #98a2b3;
+  opacity: 1;
+}
+
+.adiciona-contato .form-control[disabled],
+.adiciona-contato .form-select[disabled]{
+  background: #f7f8fb;
+}
+
+.adiciona-contato .btn-primary:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(90,79,255,0.14);
+}
+
+/* Compact layout on small screens */
+@media (max-width: 576px){
+  .adiciona-contato{ padding: 0.75rem; margin: 0.8rem; }
+  .adiciona-contato .btn{ width: 100%; }
+}

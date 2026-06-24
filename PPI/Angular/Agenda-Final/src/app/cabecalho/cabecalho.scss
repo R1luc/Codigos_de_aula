@@ -1,0 +1,42 @@
+/* Simple styled header */
+.cabecalho{
+  height: 64px;
+  background: linear-gradient(90deg, rgba(122,107,255,0.06), rgba(255,255,255,0));
+  border-bottom: 1px solid rgba(30,34,48,0.06);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.cabecalho .brand .logo{
+  width: 44px;
+  height: 44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(180deg,var(--app-primary), #7a6bff);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 1.15rem;
+  box-shadow: 0 6px 16px rgba(90,79,255,0.12);
+}
+
+.cabecalho .title{
+  font-weight: 800;
+  font-size: 1rem;
+  color: #151823;
+}
+
+.cabecalho .subtitle{
+  font-size: 0.8rem;
+  color: #6b7280;
+  line-height: 1;
+}
+
+.cabecalho .actions .btn{
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 560px){
+  .cabecalho{ height: auto; gap:0.5rem; padding:0.5rem; }
+  .cabecalho .subtitle{ display:none; }
+}

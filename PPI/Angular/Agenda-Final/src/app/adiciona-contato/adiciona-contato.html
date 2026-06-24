@@ -1,0 +1,38 @@
+<div class="adiciona-contato card shadow-sm rounded p-3">
+  <form [formGroup]="FormContato" class="needs-validation">
+    <div class="mb-3 form-group">
+      <label for="nome" class="form-label">Nome</label>
+      <input id="nome" class="form-control" formControlName="nome" type="text" />
+    </div>
+
+    <div class="mb-3 form-group">
+      <label for="email" class="form-label">Email</label>
+      <input id="email" class="form-control" formControlName="email" type="email" />
+    </div>
+
+    <div class="mb-3 form-group">
+      <label for="telefone" class="form-label">Telefone</label>
+      <input id="telefone" class="form-control" formControlName="telefone" type="text" />
+    </div>
+
+    <div class="mb-3 form-group">
+      <label for="aniversario" class="form-label">Aniversário</label>
+      <input id="aniversario" class="form-control" formControlName="aniversario" type="date" />
+    </div>
+
+    <div class="mb-3 form-group">
+      <label for="tipo" class="form-label">Tipo de Contato</label>
+      <select id="tipo" class="form-select" formControlName="tipo">
+        <option value="Amigo">AMIGO</option>
+        <option value="Família">FAMÍLIA</option>
+        <option value="IFRN">IFRN</option>
+        <option value="Trabalho">TRABALHO</option>
+        <option value="Outro">OUTRO</option>
+      </select>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-primary" (click)="adicionarContato()">Adicionar Contato</button>
+    </div>
+  </form>
+</div>

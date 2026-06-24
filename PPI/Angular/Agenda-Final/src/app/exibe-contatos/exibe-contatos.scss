@@ -1,0 +1,84 @@
+/* Estilos inspirados no Bootstrap simples para garantir bordas arredondadas e espaçamento limpo */
+.exibe-contatos {
+  max-width: 1000px;
+  margin: 1.5rem auto;
+}
+
+.exibe-contatos .card-body{
+  padding: 1rem 1.25rem;
+}
+
+.list-card {
+  border-radius: 0.9rem;
+}
+
+#exibe-contatos-lista {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #fff;
+}
+
+#exibe-contatos-lista thead th{
+  background: linear-gradient(90deg, rgba(245,247,255,0.9), #f1f4ff);
+  color: #22263a;
+  font-weight: 700;
+}
+
+#exibe-contatos-lista tbody tr{
+  transition: background-color .12s ease;
+}
+
+#exibe-contatos-lista tbody tr:hover{
+  background: #fbfaff;
+}
+
+/* botão pequeno com margem */
+.btn-sm {
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.5rem;
+}
+
+.btn-danger{
+  background: linear-gradient(90deg, #ff6b6b, #ff4b4b);
+  border: none;
+}
+
+/* Table polish and actions */
+#exibe-contatos-lista tbody td{
+  vertical-align: middle;
+  padding: 0.65rem 0.9rem;
+}
+
+#exibe-contatos-lista tbody tr:nth-child(odd){
+  background: #ffffff;
+}
+
+#exibe-contatos-lista tbody tr:nth-child(even){
+  background: #fbfbfd;
+}
+
+#exibe-contatos-lista .btn-sm{
+  font-weight: 600;
+  padding: 0.28rem 0.7rem;
+}
+
+.exibe-contatos .card{
+  border-radius: 1rem;
+  box-shadow: 0 8px 28px rgba(41,50,83,0.06);
+}
+
+.exibe-contatos .card-title{
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1e2230;
+}
+
+/* action buttons group */
+.action-cell{ display:flex; gap:0.4rem; align-items:center; }
+.action-cell .btn{ min-width: 3rem; }
+
+@media (max-width: 720px){
+  #exibe-contatos-lista thead{ display:none; }
+  #exibe-contatos-lista tbody td{ display:block; width:100%; }
+  #exibe-contatos-lista tbody tr{ margin-bottom: 0.75rem; display:block; border-radius:0.6rem; box-shadow:0 6px 18px rgba(16,24,40,0.04); overflow:hidden; }
+}
