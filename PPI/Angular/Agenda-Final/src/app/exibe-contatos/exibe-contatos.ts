@@ -21,8 +21,4 @@ export class ExibeContatos {
   removerContato(contato: any) {
     this.#contatosService.remover(contato);
   }
-
-  trackByEmail(index: number, contato: any) {
-    return contato?.email ?? index;
-  }
 }
