@@ -1,42 +1,140 @@
-/* Simple styled header */
-.cabecalho{
-  height: 64px;
-  background: linear-gradient(90deg, rgba(122,107,255,0.06), rgba(255,255,255,0));
-  border-bottom: 1px solid rgba(30,34,48,0.06);
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+.cabecalho {
+
+    height: 90px;
+
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+
+    color: white;
+
+    border-radius: 18px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,.15);
+
+    margin: 20px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    &::before{
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        background: rgba(255,255,255,.08);
+        border-radius: 50%;
+        right: -70px;
+        top: -100px;
+    }
+
+    &::after{
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: rgba(255,255,255,.05);
+        border-radius: 50%;
+        right: 120px;
+        bottom: -60px;
+    }
+
 }
 
-.cabecalho .brand .logo{
-  width: 44px;
-  height: 44px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background: linear-gradient(180deg,var(--app-primary), #7a6bff);
-  color: #fff;
-  border-radius: 10px;
-  font-size: 1.15rem;
-  box-shadow: 0 6px 16px rgba(90,79,255,0.12);
+.brand{
+    z-index: 2;
 }
 
-.cabecalho .title{
-  font-weight: 800;
-  font-size: 1rem;
-  color: #151823;
+.logo{
+
+    width:60px;
+    height:60px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:18px;
+
+    font-size:30px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+    transition:.3s;
+
 }
 
-.cabecalho .subtitle{
-  font-size: 0.8rem;
-  color: #6b7280;
-  line-height: 1;
+.logo:hover{
+
+    transform:rotate(-8deg) scale(1.08);
+
 }
 
-.cabecalho .actions .btn{
-  border-radius: 0.5rem;
+.title{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
 }
 
-@media (max-width: 560px){
-  .cabecalho{ height: auto; gap:0.5rem; padding:0.5rem; }
-  .cabecalho .subtitle{ display:none; }
+.subtitle{
+
+    font-size:14px;
+
+    opacity:.8;
+
+}
+
+.actions{
+
+    z-index:2;
+
+}
+
+.status{
+
+    display:flex;
+    align-items:center;
+
+    background:rgba(255,255,255,.12);
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    backdrop-filter: blur(10px);
+
+    font-size:14px;
+
+}
+
+.dot{
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:#4ade80;
+
+    margin-right:8px;
+
+    box-shadow:0 0 10px #4ade80;
+
+}
+
+.date{
+
+    font-size:15px;
+
+    font-weight:500;
+
+    opacity:.95;
+
 }

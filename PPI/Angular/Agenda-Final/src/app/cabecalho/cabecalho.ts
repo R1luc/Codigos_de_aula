@@ -7,5 +7,13 @@ import { Component, signal } from '@angular/core';
   styleUrls: ['./cabecalho.scss']
 })
 export class Cabecalho {
+
   protected readonly title = signal('Agenda');
+
+  currentDate = new Date().toLocaleDateString('pt-BR', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long'
+  });
+
 }
