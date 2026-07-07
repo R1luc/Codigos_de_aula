@@ -41,9 +41,6 @@ export class AdicionaContato {
         aniversario: formValue.aniversario ? new Date(formValue.aniversario) : new Date(),
         tipo: formValue.tipo ?? TipoContato.OUTRO
       };
-
-      this.#contatoService.adicionar(novoContato);
     }
   }
-
 }
