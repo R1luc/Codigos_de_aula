@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { ConsultaFilme } from './consulta-filme/consulta-filme'; 
+import { ConsultaFilme } from "./consulta-filme/consulta-filme";
+
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,5 @@ import { ConsultaFilme } from './consulta-filme/consulta-filme';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('Filme');
+  protected readonly title = signal('Agenda');
 }

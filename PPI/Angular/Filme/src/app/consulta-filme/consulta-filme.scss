@@ -1,0 +1,336 @@
+// Variáveis
+$primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+
+// Animações
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+// Estilos do componente
+.consulta-filme {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: none;
+  margin: 0 auto 2rem;
+  max-width: 600px;
+  animation: fadeInDown 0.6s ease-out;
+  transition: all 0.3s ease;
+  text-align: center;
+
+  &:hover {
+    box-shadow: 0 12px 24px rgba(102, 126, 234, 0.15) !important;
+    transform: translateY(-2px);
+  }
+
+  form {
+    .mb-3 {
+      margin-bottom: 1.5rem !important;
+
+      label {
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+        display: block;
+      }
+
+      .form-control {
+        border: 2px solid #e0e6ed;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background-color: #ffffff;
+
+        &:focus {
+          border-color: #667eea;
+          box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+          background-color: #ffffff;
+        }
+
+        &:hover:not(:focus) {
+          border-color: #667eea;
+        }
+      }
+    }
+
+    .d-flex {
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .btn {
+        font-weight: 600;
+        border-radius: 8px;
+        padding: 0.75rem 1.5rem;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        font-size: 0.875rem;
+        letter-spacing: 0.5px;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+// Card de resultados
+.card {
+  background: #ffffff;
+  border: none;
+  animation: slideInUp 0.6s ease-out 0.1s backwards;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+  max-width: 900px;
+
+  &:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  .card-body {
+    padding: 2rem;
+    text-align: center;
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #667eea;
+    }
+
+    .alert {
+      border-radius: 8px;
+      border: none;
+      animation: pulse 2s ease-in-out infinite;
+      text-align: left;
+      margin: 0 auto;
+
+      &.alert-info {
+        background-color: #e7f3ff;
+        color: #0051ba;
+      }
+    }
+  }
+
+  .table-responsive {
+    border-radius: 8px;
+    animation: fadeInDown 0.5s ease-out 0.2s backwards;
+    display: flex;
+    justify-content: center;
+
+    .table {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+      max-width: 100%;
+
+      thead {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+
+        th {
+          font-weight: 700;
+          padding: 1rem;
+          border: none;
+          text-transform: uppercase;
+          font-size: 0.85rem;
+          letter-spacing: 0.5px;
+          text-align: center;
+        }
+      }
+
+      tbody {
+        tr {
+          transition: all 0.3s ease;
+          border-bottom: 1px solid #e0e6ed;
+
+          &:hover {
+            background-color: #f8f9fa;
+            transform: scale(1.01);
+          }
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          td {
+            padding: 1rem;
+            vertical-align: middle;
+            color: #495057;
+            text-align: center;
+
+            img {
+              border-radius: 6px;
+              transition: all 0.3s ease;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+              margin: 0 auto;
+              display: block;
+
+              &:hover {
+                transform: scale(1.1);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsividade
+@media (max-width: 768px) {
+  .consulta-filme {
+    margin-bottom: 1.5rem;
+
+    form {
+      .d-flex {
+        flex-direction: column;
+
+        .btn {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .card {
+    .card-body {
+      padding: 1.5rem;
+
+      .card-title {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .table-responsive {
+      .table {
+        font-size: 0.85rem;
+
+        thead th {
+          padding: 0.75rem 0.5rem;
+          font-size: 0.75rem;
+        }
+
+        tbody td {
+          padding: 0.75rem 0.5rem;
+
+          img {
+            max-width: 80px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .consulta-filme {
+    .p-3 {
+      padding: 1rem !important;
+    }
+
+    form {
+      .mb-3 {
+        margin-bottom: 1rem !important;
+
+        label {
+          font-size: 0.9rem;
+        }
+
+        .form-control {
+          font-size: 0.95rem;
+        }
+      }
+
+      .d-flex {
+        gap: 0.5rem;
+
+        .btn {
+          padding: 0.625rem 1rem;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .card {
+    .card-body {
+      padding: 1rem;
+
+      .card-title {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .alert {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+      }
+    }
+
+    .table-responsive {
+      .table {
+        font-size: 0.75rem;
+
+        thead th {
+          padding: 0.5rem 0.25rem;
+          font-size: 0.7rem;
+        }
+
+        tbody td {
+          padding: 0.5rem 0.25rem;
+
+          img {
+            max-width: 60px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Classe para container
+:host ::ng-deep {
+  .consulta-container {
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+  }
+}
