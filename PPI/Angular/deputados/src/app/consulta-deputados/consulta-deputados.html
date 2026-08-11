@@ -1,0 +1,55 @@
+<h1 class="titulo">Deputados</h1>
+<div class="filtro-container">
+    <h2>Filtros:</h2>
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="filtro" value="Todos" checked (change)="filtro.set('todos')">
+            Todos
+        </label>
+        <label>
+            <input type="radio" name="filtro" value="nome" (change)="filtro.set('nome')">
+            Nome
+        </label>
+        <label>
+            <input type="radio" name="filtro" value="partido" (change)="filtro.set('partido')">
+            Partido
+        </label>
+        <label>
+            <input type="radio" name="filtro" value="uf" (change)="filtro.set('uf')">
+            UF
+        </label>
+    </div>
+</div>
+
+@if (filtro() === 'todos') {
+    <button (click)="consultarTodos()">Consultar</button>
+}
+
+@if (filtro() === 'nome') {
+    <div>
+        <input type="text" placeholder="Digite o nome do deputado" (input)="filtroValor.set($event.target.value)">
+    </div>
+    <button (click)="consultarPorNome()">Consultar</button>
+}
+@if (filtro() === 'partido') {
+    <div>
+        <input type="text" placeholder="Digite o partido do deputado" (input)="filtroValor.set($event.target.value)">
+    </div>
+    <button (click)="consultarPorPartido()">Consultar</button>
+}
+@if (filtro() === 'uf') {
+    <div>
+        <input type="text" placeholder="Digite a UF do deputado" (input)="filtroValor.set($event.target.value)">
+    </div>
+    <button (click)="consultarPorUf()">Consultar</button>
+}
+
+<div class="deputados">
+@for(dep of deputados(); track dep.id) {
+    <div class="card-deputado">
+        <p><img [src]="dep.urlFoto"></p>
+        <p>{{ dep.nome }}</p>
+        <p>{{ dep.siglaPartido }} - {{ dep.siglaUf }}</p>
+    </div>
+}
+</div>
