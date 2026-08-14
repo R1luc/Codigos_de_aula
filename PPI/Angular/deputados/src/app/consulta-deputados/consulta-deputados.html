@@ -22,26 +22,26 @@
 </div>
 
 @if (filtro() === 'todos') {
-    <button (click)="consultarTodos()">Consultar</button>
+    <button class="btn-consultar" (click)="consultarTodos()">Consultar</button>
 }
 
 @if (filtro() === 'nome') {
-    <div>
-        <input type="text" placeholder="Digite o nome do deputado" (input)="filtroValor.set($event.target.value)">
+    <div class="campo-wrapper">
+        <input class="campo-filtro" type="text" placeholder="Digite o nome do deputado" (input)="filtroValor.set($event.target.value)">
     </div>
-    <button (click)="consultarPorNome()">Consultar</button>
+    <button class="btn-consultar" (click)="consultarPorNome()">Consultar</button>
 }
 @if (filtro() === 'partido') {
-    <div>
-        <input type="text" placeholder="Digite o partido do deputado" (input)="filtroValor.set($event.target.value)">
+    <div class="campo-wrapper">
+        <input class="campo-filtro" type="text" placeholder="Digite o partido do deputado" (input)="filtroValor.set($event.target.value)">
     </div>
-    <button (click)="consultarPorPartido()">Consultar</button>
+    <button class="btn-consultar" (click)="consultarPorPartido()">Consultar</button>
 }
 @if (filtro() === 'uf') {
-    <div>
-        <input type="text" placeholder="Digite a UF do deputado" (input)="filtroValor.set($event.target.value)">
+    <div class="campo-wrapper">
+        <input class="campo-filtro" type="text" placeholder="Digite a UF do deputado" (input)="filtroValor.set($event.target.value)">
     </div>
-    <button (click)="consultarPorUf()">Consultar</button>
+    <button class="btn-consultar" (click)="consultarPorUf()">Consultar</button>
 }
 
 <div class="deputados">
