@@ -1,48 +1,62 @@
 <h1 class="titulo">Deputados</h1>
-<div class="filtro-container">
-    <h2>Filtros:</h2>
-    <div class="radio-group">
-        <label>
-            <input type="radio" name="filtro" value="Todos" checked (change)="filtro.set('todos')">
-            Todos
-        </label>
-        <label>
-            <input type="radio" name="filtro" value="nome" (change)="filtro.set('nome')">
-            Nome
-        </label>
-        <label>
-            <input type="radio" name="filtro" value="partido" (change)="filtro.set('partido')">
-            Partido
-        </label>
-        <label>
-            <input type="radio" name="filtro" value="uf" (change)="filtro.set('uf')">
-            UF
-        </label>
-    </div>
-</div>
 
-@if (filtro() === 'todos') {
-    <button class="btn-consultar" (click)="consultarTodos()">Consultar</button>
-}
+<form [formGroup]="filtroForm">
+  <div class="filtro-container">
+      <h2>Filtros:</h2>
+      <div class="radio-group">
+          <label>
+              <input type="radio" formControlName="filtro" value="todos">
+              Todos
+          </label>
+          <label>
+              <input type="radio" formControlName="filtro" value="nome">
+              Nome
+          </label>
+          <label>
+              <input type="radio" formControlName="filtro" value="partido">
+              Partido
+          </label>
+          <label>
+              <input type="radio" formControlName="filtro" value="uf">
+              UF
+          </label>
+      </div>
+  </div>
 
-@if (filtro() === 'nome') {
-    <div class="campo-wrapper">
-        <input class="campo-filtro" type="text" placeholder="Digite o nome do deputado" (input)="filtroValor.set($event.target.value)">
-    </div>
-    <button class="btn-consultar" (click)="consultarPorNome()">Consultar</button>
-}
-@if (filtro() === 'partido') {
-    <div class="campo-wrapper">
-        <input class="campo-filtro" type="text" placeholder="Digite o partido do deputado" (input)="filtroValor.set($event.target.value)">
-    </div>
-    <button class="btn-consultar" (click)="consultarPorPartido()">Consultar</button>
-}
-@if (filtro() === 'uf') {
-    <div class="campo-wrapper">
-        <input class="campo-filtro" type="text" placeholder="Digite a UF do deputado" (input)="filtroValor.set($event.target.value)">
-    </div>
-    <button class="btn-consultar" (click)="consultarPorUf()">Consultar</button>
-}
+  @if (filtroAtual === 'todos') {
+      <button class="btn-consultar" type="button" (click)="consultarTodos()">Consultar</button>
+  }
+
+  @if (filtroAtual === 'nome') {
+      <div class="campo-wrapper">
+          <input class="campo-filtro" type="text" formControlName="valor" placeholder="Digite o nome do deputado">
+      </div>
+      @if (valor.invalid && (valor.dirty || valor.touched)) {
+        <small class="error">Informe pelo menos 3 letras para buscar por nome.</small>
+      }
+      <button class="btn-consultar" type="button" [disabled]="valor.invalid" (click)="consultarPorNome()">Consultar</button>
+  }
+
+  @if (filtroAtual === 'partido') {
+      <div class="campo-wrapper">
+          <input class="campo-filtro" type="text" formControlName="valor" placeholder="Digite o partido do deputado">
+      </div>
+      @if (valor.invalid && (valor.dirty || valor.touched)) {
+        <small class="error">O partido deve ter entre 2 e 5 letras, por exemplo: PT, PSDB, PL.</small>
+      }
+      <button class="btn-consultar" type="button" [disabled]="valor.invalid" (click)="consultarPorPartido()">Consultar</button>
+  }
+
+  @if (filtroAtual === 'uf') {
+      <div class="campo-wrapper">
+          <input class="campo-filtro" type="text" formControlName="valor" placeholder="Digite a UF do deputado">
+      </div>
+      @if (valor.invalid && (valor.dirty || valor.touched)) {
+        <small class="error">A UF deve ter 2 letras, como SP, RJ ou PR.</small>
+      }
+      <button class="btn-consultar" type="button" [disabled]="valor.invalid" (click)="consultarPorUf()">Consultar</button>
+  }
+</form>
 
 <div class="deputados">
 @for(dep of deputados(); track dep.id) {
