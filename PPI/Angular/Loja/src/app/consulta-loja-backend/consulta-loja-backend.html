@@ -1,0 +1,11 @@
+<div class="loja">
+@for(loj of lojas(); track loj.id) {
+    <div class="card-loja">
+        <p><img [src]="loj.foto"></p>
+        <p>{{ loj.nome }}</p>
+        <p>{{ loj.marca }}</p>
+        <p>{{ loj.descricao }}</p>
+        <p>R$ {{ loj.preco }}</p>
+        <p>Quantidade: {{ loj.quantidade }}</p>
+    </div>
+}node 
