@@ -8,6 +8,3 @@ export type Loja = {
       quantidade: number
 }
 
-export type LojaResponse = {
-    dados: Loja[]
-}

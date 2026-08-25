@@ -11,12 +11,15 @@ import { Loja } from '../loja';
 export class ConsultaLojas {
   readonly #lojaService = inject(LojaService)
   protected lojas = signal<Loja[] | undefined>(undefined)
-  filtro = signal<string>('todos')
-  filtroValor = signal<string>('')
+
+
+  constructor() {
+    this.consultarTodos()
+  }
 
   consultarTodos() {
       this.#lojaService.obterTodos().subscribe(res => {
-      this.lojas.set(res.dados)
+      this.lojas.set(res)
   })
   }
 }
