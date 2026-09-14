@@ -65,7 +65,7 @@ app.get('/produtos/:id', (req: Request, res: Response) => {
     const prod = produtos.find(p => p.id === id);
     res.json(prod);
   }
-  res.json([]);
+  res.send([]);
 });
 
 app.listen(3000, () => {

@@ -1,0 +1,11 @@
+<h1>Produtos da Loja</h1>
+@for(produto of produtos(); track produto.id) {
+    <div>
+        <p><img [src]="produto.foto"></p>
+        <p>{{ produto.nome }}</p>
+        <p>{{ produto.marca }}</p>
+        <p>{{ produto.descricao }}</p>
+        <p>R$ {{ produto.preco }}</p>
+        <p>Quantidade: {{ produto.quantidade }}</p>
+    </div>
+}

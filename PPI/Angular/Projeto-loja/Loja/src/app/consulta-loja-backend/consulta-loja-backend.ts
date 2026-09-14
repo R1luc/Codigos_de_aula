@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { LojaService } from '../loja-service';
-import { Loja } from '../loja';
+import { Produto } from '../produto';
 
 @Component({
   selector: 'app-consulta-loja-backend',
@@ -10,7 +10,7 @@ import { Loja } from '../loja';
 })
 export class ConsultaLojas {
   readonly #lojaService = inject(LojaService)
-  protected lojas = signal<Loja[] | undefined>(undefined)
+  protected produtos = signal<Produto[] | undefined>(undefined)
 
 
   constructor() {
@@ -19,7 +19,7 @@ export class ConsultaLojas {
 
   consultarTodos() {
       this.#lojaService.obterTodos().subscribe(res => {
-      this.lojas.set(res)
+      this.produtos.set(res)
   })
   }
 }
