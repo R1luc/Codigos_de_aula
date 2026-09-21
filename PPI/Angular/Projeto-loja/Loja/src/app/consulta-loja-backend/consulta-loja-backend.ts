@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { LojaService } from '../loja-service';
+import { CarrinhoService } from '../carrinho-service';
 import { Produto } from '../produto';
 
 @Component({
@@ -10,6 +11,7 @@ import { Produto } from '../produto';
 })
 export class ConsultaLojas {
   readonly #lojaService = inject(LojaService)
+  readonly #carrinhoService = inject(CarrinhoService)
   protected produtos = signal<Produto[] | undefined>(undefined)
 
 
@@ -21,5 +23,21 @@ export class ConsultaLojas {
       this.#lojaService.obterTodos().subscribe(res => {
       this.produtos.set(res)
   })
+  }
+
+  adicionarAoCarrinho(produto: Produto) {
+    this.#carrinhoService.adicionarItem({ id: produto.id, produto, quantidade: 1 })
+  }
+
+  aumentarQuantidade(produtoId: number) {
+    this.#carrinhoService.aumentarQuantidade(produtoId)
+  }
+
+  diminuirQuantidade(produtoId: number) {
+    this.#carrinhoService.diminuirQuantidade(produtoId)
+  }
+
+  removerItem(produtoId: number) {
+    this.#carrinhoService.removerItem(produtoId)
   }
 }

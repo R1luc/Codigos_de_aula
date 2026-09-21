@@ -1,0 +1,13 @@
+<h1>Carrinho de Compras</h1>
+@for(item of carrinho(); track item.produto.id) {
+    <div>
+        <p>{{ item.produto.nome }}</p>
+        <p>Quantidade: {{ item.quantidade }}</p>
+        <p>Preço Unitário: R$ {{ item.produto.preco }}</p>
+        <p>Subtotal: R$ {{ item.produto.preco * item.quantidade }}</p>
+        <button (click)="aumentarQuantidade(item.produto.id)">+</button>
+        <button (click)="diminuirQuantidade(item.produto.id)">-</button>
+        <button (click)="removerItem(item.produto.id)">Remover</button>
+    </div>
+}
+<p>Total: R$ {{ total() }}</p>
