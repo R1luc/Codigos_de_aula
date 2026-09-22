@@ -13,7 +13,7 @@ export class ConsultaLojas {
   readonly #lojaService = inject(LojaService)
   readonly #carrinhoService = inject(CarrinhoService)
   protected produtos = signal<Produto[] | undefined>(undefined)
-
+  protected total = this.#carrinhoService.obterTotalSignal()
 
   constructor() {
     this.consultarTodos()
@@ -27,17 +27,25 @@ export class ConsultaLojas {
 
   adicionarAoCarrinho(produto: Produto) {
     this.#carrinhoService.adicionarItem({ id: produto.id, produto, quantidade: 1 })
+    this.atualizarTotal()
   }
 
   aumentarQuantidade(produtoId: number) {
     this.#carrinhoService.aumentarQuantidade(produtoId)
+    this.atualizarTotal()
   }
 
   diminuirQuantidade(produtoId: number) {
     this.#carrinhoService.diminuirQuantidade(produtoId)
+    this.atualizarTotal()
   }
 
   removerItem(produtoId: number) {
     this.#carrinhoService.removerItem(produtoId)
+    this.atualizarTotal()
+  }
+
+  atualizarTotal() {
+     this.#carrinhoService.atualizarTotal()
   }
 }

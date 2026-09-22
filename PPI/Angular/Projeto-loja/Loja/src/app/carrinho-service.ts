@@ -4,17 +4,30 @@ import { Itens } from './produto';
 @Service()
 export class CarrinhoService {
     protected itens = signal<Itens[] | undefined>(undefined);
+    protected total = signal<number>(0);
+    protected numeroItens = signal<number>(0);
+
+    contarItens() {
+        const itens = this.itens() || [];
+        const quantidadeTotal = itens.reduce((total, item) => total + item.quantidade, 0);
+        this.numeroItens.set(quantidadeTotal);
+    }
+
+    obterNumeroItens() {
+        return this.numeroItens;
+    }
 
     adicionarItem(item: Itens) {
         const itensAtuais = this.itens() || [];
-          if (itensAtuais.some((i: Itens) => i.id === item.id)) {
+        if (itensAtuais.some((i: Itens) => i.id === item.id)) {
             this.aumentarQuantidade(item.id);
-          }
-          else if (itensAtuais) {
+        } else if (itensAtuais) {
             this.itens.set([...itensAtuais, item]);
         } else {
             this.itens.set([item]);
         }
+        this.atualizarTotal();
+        this.contarItens();
     }
 
     aumentarQuantidade(itemId: number) {
@@ -27,6 +40,8 @@ export class CarrinhoService {
                 return item;
             });
             this.itens.set(itensAtualizados);
+            this.atualizarTotal();
+            this.contarItens();
         }
     }
 
@@ -40,9 +55,12 @@ export class CarrinhoService {
                 return item;
             });
             this.itens.set(itensAtualizados);
+            this.atualizarTotal();
+            this.contarItens();
         }
         if (itensAtuais && itensAtuais.some((item: Itens) => item.id === itemId && item.quantidade === 1)) {
             this.removerItem(itemId);
+            this.contarItens();
         }
     }
 
@@ -51,6 +69,8 @@ export class CarrinhoService {
         if (itensAtuais) {
             const itensAtualizados = itensAtuais.filter((item: Itens) => item.id !== itemId);
             this.itens.set(itensAtualizados);
+            this.atualizarTotal();
+            this.contarItens();
         }
     }
 
@@ -64,5 +84,13 @@ export class CarrinhoService {
             return itensAtuais.reduce((total: number, item: Itens) => total + item.produto.preco * item.quantidade, 0);
         }
         return 0;
+    }
+
+    atualizarTotal() {
+        this.total.set(this.obterTotal());
+    }
+
+    obterTotalSignal() {
+        return this.total;
     }
 }

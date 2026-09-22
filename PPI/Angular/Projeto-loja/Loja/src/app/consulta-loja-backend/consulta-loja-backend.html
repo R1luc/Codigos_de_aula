@@ -1,8 +1,19 @@
 <h1>Produtos da Loja</h1>
-@for(produto of produtos(); track produto.id) {
+
+@if(produtos() === undefined) {
+    <p>Nenhum produto disponível.</p>
+} 
+
+@else if(produtos()?.length === 0) {
+    <p>Nenhum produto disponível.</p>
+} 
+
+@else {
+    @for(produto of produtos(); track produto.id) {
     <div>
         <p>{{ produto.nome }}</p>
         <p>R$ {{ produto.preco }}</p>
         <button (click)="adicionarAoCarrinho(produto)">Adicionar ao Carrinho</button>
     </div>
+    }
 }
