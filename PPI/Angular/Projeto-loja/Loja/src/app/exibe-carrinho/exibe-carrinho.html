@@ -1,32 +1,52 @@
-<h1>Carrinho de Compras</h1>
-@if(mostrarCarrinho() === false) {
-    <button (click)="exibirCarrinho()">Exibir Carrinho</button>
-    <p>Total de itens no carrinho: {{ numeroItens() }}</p>
-} @else {
-    @if(carrinho() === undefined) {
-    <p>O carrinho está vazio.</p>
-    }
+<section class="cart-box">
+  <div class="cart-header">
+    <h2>Carrinho</h2>
 
-    @else if(carrinho()?.length === 0) {
-    <p>O carrinho está vazio.</p>
-    }
+    <div class="header-actions">
+      <span class="counter">{{ numeroItens() }} itens</span>
+      <button type="button" class="toggle-button" (click)="exibirCarrinho()">
+        {{ mostrarCarrinho() ? 'Ocultar' : 'Exibir' }}
+      </button>
+    </div>
+  </div>
 
-    @else {
+  @if(mostrarCarrinho() === false) {
+    <div class="cart-preview">
+      <p>Seu pedido está pronto para ser montado.</p>
+    </div>
+  } @else {
+    @if(carrinho() === undefined || carrinho()?.length === 0) {
+      <div class="empty-state">
+        <p>O carrinho está vazio.</p>
+      </div>
+    } @else {
+      <div class="cart-items">
         @for(item of carrinho(); track item.produto.id) {
-        <div>
-            <p>{{ item.produto.nome }}</p>
-            <p>Quantidade: {{ item.quantidade }}</p>
-            <p>Preço Unitário: R$ {{ item.produto.preco | number:'1.2-2' }}</p>
-            <p>Subtotal: R$ {{ item.produto.preco * item.quantidade | number:'1.2-2' }}</p>
-            <button (click)="aumentarQuantidade(item.produto.id)">+</button>
-            <button (click)="diminuirQuantidade(item.produto.id)">-</button>
-            <button (click)="removerItem(item.produto.id)">Remover</button>
-        </div>
+          <div class="cart-item">
+            <div class="item-info">
+              <strong>{{ item.produto.nome }}</strong>
+              <span>R$ {{ item.produto.preco | number:'1.2-2' }} cada</span>
+            </div>
+
+            <div class="item-amount">
+              <span>Qtd: {{ item.quantidade }}</span>
+            </div>
+
+            <div class="cart-actions">
+              <button type="button" (click)="diminuirQuantidade(item.produto.id)">-</button>
+              <button type="button" (click)="aumentarQuantidade(item.produto.id)">+</button>
+              <button type="button" class="remove-button" (click)="removerItem(item.produto.id)">Remover</button>
+            </div>
+
+            <div class="subtotal">Subtotal: R$ {{ item.produto.preco * item.quantidade | number:'1.2-2' }}</div>
+          </div>
+        }
+      </div>
+
+      <div class="cart-total">
+        <span>Total</span>
+        <strong>R$ {{ total() | number:'1.2-2' }}</strong>
+      </div>
     }
-    <p>Total: R$ {{ total() | number:'1.2-2' }}</p>
-    }
-}
-
-
-
-
+  }
+</section>

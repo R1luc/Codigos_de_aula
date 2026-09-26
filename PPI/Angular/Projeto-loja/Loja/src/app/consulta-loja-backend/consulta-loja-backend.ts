@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { LojaService } from '../loja-service';
 import { CarrinhoService } from '../carrinho-service';
@@ -5,7 +6,7 @@ import { Produto } from '../produto';
 
 @Component({
   selector: 'app-consulta-loja-backend',
-  imports: [],
+  imports: [DecimalPipe],
   templateUrl: './consulta-loja-backend.html',
   styleUrl: './consulta-loja-backend.scss',
 })

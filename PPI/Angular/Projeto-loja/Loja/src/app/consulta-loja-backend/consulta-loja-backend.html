@@ -1,19 +1,39 @@
-<h1>Produtos da Loja</h1>
+<section class="loja-section">
+  <div class="section-header">
+    <h2>Produtos da Loja</h2>
+    <span class="counter">{{ produtos()?.length ?? 0 }} itens</span>
+  </div>
 
-@if(produtos() === undefined) {
-    <p>Nenhum produto disponível.</p>
-} 
-
-@else if(produtos()?.length === 0) {
-    <p>Nenhum produto disponível.</p>
-} 
-
-@else {
-    @for(produto of produtos(); track produto.id) {
-    <div>
-        <p>{{ produto.nome }}</p>
-        <p>R$ {{ produto.preco }}</p>
-        <button (click)="adicionarAoCarrinho(produto)">Adicionar ao Carrinho</button>
+  @if(produtos() === undefined) {
+    <div class="empty-state">
+      <p>Nenhum produto disponível.</p>
     </div>
-    }
-}
+  }
+
+  @else if(produtos()?.length === 0) {
+    <div class="empty-state">
+      <p>Nenhum produto disponível.</p>
+    </div>
+  }
+
+  @else {
+    <div class="loja">
+      @for(produto of produtos(); track produto.id) {
+        <article class="card-loja">
+          <img [src]="produto.foto" [alt]="produto.nome" />
+
+          <div class="card-content">
+            <span class="marca">{{ produto.marca }}</span>
+            <h3>{{ produto.nome }}</h3>
+            <p class="descricao">{{ produto.descricao }}</p>
+
+            <div class="card-footer">
+              <strong class="preco">R$ {{ produto.preco | number:'1.2-2' }}</strong>
+              <button type="button" (click)="adicionarAoCarrinho(produto)">Adicionar</button>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  }
+</section>
