@@ -15,9 +15,6 @@ export class ExibeCarrinho {
   protected mostrarCarrinho = signal(false);
   protected numeroItens = this.#carrinhoService.obterNumeroItens();
 
-  constructor() {
-  }
-
   aumentarQuantidade(produtoId: number) {
     this.#carrinhoService.aumentarQuantidade(produtoId)
     this.atualizarTotal()
